@@ -1,7 +1,10 @@
+import React, { useContext } from "react";
+
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 
+import { TransactionContext } from "../context/TransactionContext";
 import { Loader } from "./";
 
 const commonStyles =
@@ -31,9 +34,20 @@ const Input = ({
 );
 
 const Welcome: React.FC = () => {
-  const connectWallet = () => {};
-  const handleChange = () => {};
-  const handleSubmit = () => {};
+  const { connectWallet, currentAccount, isLoading, formData, sendTransaction, handleChange } = useContext(TransactionContext);
+  
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    const { addressTo, amount, keyword, message } = formData!;
+
+    e.preventDefault();
+
+    if( !addressTo || !amount || !keyword || !message ) {
+      alert("Please fill all the fields");
+      return;
+    }
+
+    sendTransaction!();
+  };
 
   return (
     <div className="flex w-full justify-center items-center">
@@ -45,7 +59,7 @@ const Welcome: React.FC = () => {
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
             Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto.
           </p>
-          {/* {!currentAccount && ( */}
+          {!currentAccount && (
             <button
               type="button"
               onClick={connectWallet}
@@ -56,7 +70,7 @@ const Welcome: React.FC = () => {
                 Connect Wallet
               </p>
             </button>
-          {/* )} */}
+          )}
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commonStyles}`}>
@@ -87,7 +101,7 @@ const Welcome: React.FC = () => {
               </div>
               <div>
                 <p className="text-white font-light text-sm">
-                    Address
+                  Address
                   {/* {shortenAddress(currentAccount)} */}
                 </p>
                 <p className="text-white font-semibold text-lg mt-1">
@@ -97,15 +111,14 @@ const Welcome: React.FC = () => {
             </div>
           </div>
           <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-            <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange} />
-            <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange} />
-            <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange} />
-            <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange} />
+            <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange!} />
+            <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange!} />
+            <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange!} />
+            <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange!} />
 
             <div className="h-[1px] w-full bg-gray-400 my-2" />
 
-            {/* {isLoading */}
-            { false
+            {isLoading
               ? <Loader />
               : (
                 <button
