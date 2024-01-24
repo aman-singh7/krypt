@@ -1,30 +1,21 @@
-# React + TypeScript + Vite
+# Krypt - Web 3.0 Blockchain Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Krypt](https://i.ibb.co/DVF4tNW/image.png)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to our Web3.0 Blockchain Application! This decentralized application (DApp) is built using React for the front end and Hardhat for developing and deploying smart contracts.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Decentralized:** Leverage the power of blockchain technology to create a decentralized and transparent application.
+- **Smart Contracts:** Utilize Hardhat to write, compile, and deploy Ethereum smart contracts.
+- **User-Friendly Interface:** The React front end provides a user-friendly and intuitive interface for interacting with the blockchain.
 
-- Configure the top-level `parserOptions` property like this:
+## Prerequisites
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Before you begin, ensure you have the following installed:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Node.js
+- npm (Node Package Manager)
+- Hardhat
